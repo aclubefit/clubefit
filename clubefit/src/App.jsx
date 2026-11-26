@@ -8,6 +8,8 @@ import AdminLayout from './pages/admin/AdminLayout'
 import Dashboard from './pages/admin/Dashboard'
 import Students from './pages/admin/Students'
 import Exercises from './pages/admin/Exercises'
+import StudentDetail from './pages/admin/StudentDetail'
+import PlanEditor from './pages/admin/PlanEditor'
 import Student from './pages/Student'
 
 const Loading = () => <div className="center" role="status">Carregando…</div>
@@ -45,6 +47,8 @@ export default function App() {
       <Route path="/admin" element={<Guard role="admin"><AdminLayout /></Guard>}>
         <Route index element={<Dashboard />} />
         <Route path="alunos" element={<Students />} />
+        <Route path="alunos/:id" element={<StudentDetail />} />
+        <Route path="alunos/:id/ficha/:letra" element={<PlanEditor />} />
         <Route path="exercicios" element={<Exercises />} />
       </Route>
       <Route path="/aluno" element={<Guard role="student"><Student /></Guard>} />

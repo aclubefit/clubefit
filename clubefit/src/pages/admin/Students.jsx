@@ -1,4 +1,5 @@
 import { useCallback, useEffect, useState } from 'react'
+import { Link } from 'react-router-dom'
 import { supabase, traduzErro } from '../../lib'
 
 const ROTULO = { pending: 'Pendente', approved: 'Aprovado', rejected: 'Rejeitado' }
@@ -55,6 +56,9 @@ export default function Students() {
                   <p className="muted">Telefone: {p.phone || '—'}</p>
                   <p className="muted">Nascimento: {p.birth_date ? new Date(p.birth_date + 'T00:00').toLocaleDateString('pt-BR') : '—'}</p>
                   <p className="muted">Cadastro: {new Date(p.created_at).toLocaleDateString('pt-BR')}</p>
+                  {p.status === 'approved' && (
+                    <Link className="btn small" to={`/admin/alunos/${p.id}`}>Fichas de treino</Link>
+                  )}
                   {p.status === 'approved' && (
                     <button className="btn ghost small" onClick={() => alternar(p)}>
                       {p.active ? 'Desativar aluno' : 'Ativar aluno'}
