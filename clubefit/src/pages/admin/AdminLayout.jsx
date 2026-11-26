@@ -14,6 +14,7 @@ export default function AdminLayout() {
         <NavLink to="/admin" end>Painel</NavLink>
         <NavLink to="/admin/alunos">Alunos</NavLink>
         <NavLink to="/admin/exercicios">Exercícios</NavLink>
+        <NavLink to="/admin/mensagens">Mensagens</NavLink>
       </nav>
       <Outlet />
     </div>
