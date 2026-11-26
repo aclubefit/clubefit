@@ -4,7 +4,10 @@ import Login from './pages/Login'
 import Register from './pages/Register'
 import { Recover, Reset } from './pages/Recover'
 import Waiting from './pages/Waiting'
-import Admin from './pages/Admin'
+import AdminLayout from './pages/admin/AdminLayout'
+import Dashboard from './pages/admin/Dashboard'
+import Students from './pages/admin/Students'
+import Exercises from './pages/admin/Exercises'
 import Student from './pages/Student'
 
 const Loading = () => <div className="center" role="status">Carregando…</div>
@@ -39,7 +42,11 @@ export default function App() {
       <Route path="/recuperar" element={<Recover />} />
       <Route path="/redefinir" element={<Reset />} />
       <Route path="/aguardando" element={<Guard role="waiting"><Waiting /></Guard>} />
-      <Route path="/admin" element={<Guard role="admin"><Admin /></Guard>} />
+      <Route path="/admin" element={<Guard role="admin"><AdminLayout /></Guard>}>
+        <Route index element={<Dashboard />} />
+        <Route path="alunos" element={<Students />} />
+        <Route path="exercicios" element={<Exercises />} />
+      </Route>
       <Route path="/aluno" element={<Guard role="student"><Student /></Guard>} />
       <Route path="*" element={<Navigate to="/" replace />} />
     </Routes>
