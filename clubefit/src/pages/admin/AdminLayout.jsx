@@ -10,12 +10,12 @@ export default function AdminLayout() {
         <Logo small />
         <button className="btn ghost small" onClick={signOut}>Sair</button>
       </header>
-      <Outlet />
       <nav className="nav" aria-label="Menu do administrador">
         <NavLink to="/admin" end>Painel</NavLink>
         <NavLink to="/admin/alunos">Alunos</NavLink>
         <NavLink to="/admin/exercicios">Exercícios</NavLink>
       </nav>
+      <Outlet />
     </div>
   )
 }
