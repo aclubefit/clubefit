@@ -146,3 +146,20 @@ select:focus, textarea:focus { border-color: var(--red); outline: none; }
 .set.done .set-btn { background: var(--red); border-color: var(--red); }
 .set-edit { display: flex; flex-direction: column; gap: .75rem; margin-top: .75rem; align-items: flex-start; }
 .set-edit .field { width: 100%; }
+
+/* --- Etapa 11: agenda (calendário) --- */
+.stats.tres { grid-template-columns: repeat(3, 1fr); }
+.cal-head { display: flex; align-items: center; justify-content: space-between; margin-top: 1.5rem; }
+.cal-head h2 { margin: 0; text-transform: capitalize; }
+.cal-grid { display: grid; grid-template-columns: repeat(7, 1fr); gap: .35rem; margin-top: .75rem; }
+.cal-dow { text-align: center; font-size: .75rem; color: var(--muted); padding-bottom: .25rem; }
+.cal-day { aspect-ratio: 1; border-radius: 12px; border: 1px solid var(--line); background: var(--card); color: var(--text); font: 600 .95rem 'Barlow', sans-serif; cursor: pointer; min-height: 40px; }
+.cal-day.sem { color: var(--muted); }
+.cal-day.futuro { opacity: .35; }
+.cal-day.feito { background: var(--red); border-color: var(--red); color: #fff; }
+.cal-day.hoje { box-shadow: 0 0 0 2px var(--text); }
+.cal-day.sel { outline: 2px solid var(--red); outline-offset: 2px; }
+.legenda { display: flex; gap: 1rem; align-items: center; font-size: .85rem; margin: .75rem 0 1rem; }
+.dot { display: inline-block; width: .7rem; height: .7rem; border-radius: 50%; margin-right: .35rem; vertical-align: middle; }
+.dot.feito { background: var(--red); }
+.dot.sem { background: var(--card); border: 1px solid var(--line); }

@@ -15,6 +15,7 @@ import StudentLayout from './pages/student/StudentLayout'
 import StudentHome from './pages/student/Home'
 import Workouts from './pages/student/Workouts'
 import Workout from './pages/student/Workout'
+import Agenda from './pages/student/Agenda'
 
 const Loading = () => <div className="center" role="status">Carregando…</div>
 
@@ -60,6 +61,7 @@ export default function App() {
         <Route index element={<StudentHome />} />
         <Route path="treino" element={<Workouts />} />
         <Route path="treino/:letra" element={<Workout />} />
+        <Route path="agenda" element={<Agenda />} />
       </Route>
       <Route path="*" element={<Navigate to="/" replace />} />
     </Routes>

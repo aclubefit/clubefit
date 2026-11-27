@@ -1,4 +1,5 @@
 import { useCallback, useEffect, useState } from 'react'
+import { Link } from 'react-router-dom'
 import { useAuth } from '../../auth/AuthContext'
 import { supabase, traduzErro, semanasConsecutivas } from '../../lib'
 
@@ -55,6 +56,7 @@ export default function Home() {
         <div className="stat"><strong>{noMes}</strong><span>treinos no mês</span></div>
         <div className="stat"><strong>{semanas}</strong><span>{semanas === 1 ? 'semana seguida' : 'semanas seguidas'}</span></div>
       </div>
+      <Link className="btn ghost" to="/aluno/agenda">Abrir minha agenda</Link>
       <div className="row between">
         <h2>Avisos da academia</h2>
         {naoLidas > 0 && <span className="badge pendente">{naoLidas} {naoLidas === 1 ? 'nova' : 'novas'}</span>}

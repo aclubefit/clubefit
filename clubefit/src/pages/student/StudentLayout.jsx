@@ -13,6 +13,7 @@ export default function StudentLayout() {
       <nav className="nav" aria-label="Menu do aluno">
         <NavLink to="/aluno" end>Início</NavLink>
         <NavLink to="/aluno/treino">Treino</NavLink>
+        <NavLink to="/aluno/agenda">Agenda</NavLink>
       </nav>
       <Outlet />
     </div>
