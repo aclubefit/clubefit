@@ -11,7 +11,10 @@ import Exercises from './pages/admin/Exercises'
 import StudentDetail from './pages/admin/StudentDetail'
 import PlanEditor from './pages/admin/PlanEditor'
 import Messages from './pages/admin/Messages'
-import Student from './pages/Student'
+import StudentLayout from './pages/student/StudentLayout'
+import Home from './pages/student/Home'
+import Workouts from './pages/student/Workouts'
+import Workout from './pages/student/Workout'
 
 const Loading = () => <div className="center" role="status">Carregando…</div>
 
@@ -53,7 +56,11 @@ export default function App() {
         <Route path="exercicios" element={<Exercises />} />
         <Route path="mensagens" element={<Messages />} />
       </Route>
-      <Route path="/aluno" element={<Guard role="student"><Student /></Guard>} />
+      <Route path="/aluno" element={<Guard role="student"><StudentLayout /></Guard>}>
+        <Route index element={<Home />} />
+        <Route path="treino" element={<Workouts />} />
+        <Route path="treino/:letra" element={<Workout />} />
+      </Route>
       <Route path="*" element={<Navigate to="/" replace />} />
     </Routes>
   )
