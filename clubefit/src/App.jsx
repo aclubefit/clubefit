@@ -12,7 +12,7 @@ import StudentDetail from './pages/admin/StudentDetail'
 import PlanEditor from './pages/admin/PlanEditor'
 import Messages from './pages/admin/Messages'
 import StudentLayout from './pages/student/StudentLayout'
-import Home from './pages/student/Home'
+import StudentHome from './pages/student/Home'
 import Workouts from './pages/student/Workouts'
 import Workout from './pages/student/Workout'
 
@@ -57,7 +57,7 @@ export default function App() {
         <Route path="mensagens" element={<Messages />} />
       </Route>
       <Route path="/aluno" element={<Guard role="student"><StudentLayout /></Guard>}>
-        <Route index element={<Home />} />
+        <Route index element={<StudentHome />} />
         <Route path="treino" element={<Workouts />} />
         <Route path="treino/:letra" element={<Workout />} />
       </Route>

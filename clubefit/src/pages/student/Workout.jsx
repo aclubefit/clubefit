@@ -28,7 +28,6 @@ export default function Workout() {
   const [itens, setItens] = useState([])
   const [sessao, setSessao] = useState(null)
   const [logs, setLogs] = useState({})
-  const [editando, setEditando] = useState(null)
   const [carregando, setCarregando] = useState(true)
   const [ocupado, setOcupado] = useState(false)
   const [erro, setErro] = useState('')
@@ -208,27 +207,12 @@ export default function Workout() {
               {it.notes && <p className="msg-body muted">{it.notes}</p>}
               {sessao && Array.from({ length: sets }, (_, i) => i + 1).map((n) => {
                 const l = logs[chave(it.id, n)] || {}
-                const aberto = editando === chave(it.id, n)
                 return (
                   <div className={l.done ? 'set done' : 'set'} key={n}>
                     <div className="set-row">
                       <button className="set-btn" aria-pressed={!!l.done} aria-label={`Série ${n} ${l.done ? 'concluída' : 'pendente'}`} onClick={() => marcar(it, n)}>{l.done ? '✓' : n}</button>
-                      <span>Série {n}{l.reps || l.weight ? ` • ${l.reps ? `${l.reps} reps` : ''}${l.reps && l.weight ? ' • ' : ''}${l.weight || ''}` : ''}</span>
-                      <button className="btn ghost small" onClick={() => setEditando(aberto ? null : chave(it.id, n))}>{aberto ? 'Fechar' : 'Editar'}</button>
+                      <span>Série {n}{l.done ? ' • concluída' : ''}</span>
                     </div>
-                    {aberto && (
-                      <div className="set-edit">
-                        <div className="row2">
-                          <label className="field"><span>Repetições feitas</span>
-                            <input maxLength={20} value={l.reps || ''} onChange={(e) => setLogs({ ...logs, [chave(it.id, n)]: { ...l, reps: e.target.value } })} /></label>
-                          <label className="field"><span>Peso usado</span>
-                            <input maxLength={20} placeholder="Ex.: 20 kg" value={l.weight || ''} onChange={(e) => setLogs({ ...logs, [chave(it.id, n)]: { ...l, weight: e.target.value } })} /></label>
-                        </div>
-                        <label className="field"><span>Observações</span>
-                          <input maxLength={500} value={l.notes || ''} onChange={(e) => setLogs({ ...logs, [chave(it.id, n)]: { ...l, notes: e.target.value } })} /></label>
-                        <button className="btn small" onClick={() => { registrar(it, n, {}); setEditando(null) }}>Salvar série</button>
-                      </div>
-                    )}
                   </div>
                 )
               })}
